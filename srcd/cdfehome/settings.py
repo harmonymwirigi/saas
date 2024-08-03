@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      # myapps
     'visits',
+    "comando"
 ]
 
 MIDDLEWARE = [
@@ -139,6 +140,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_BASE_DIR = BASE_DIR / "staticfiles"
+STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents=True)
+STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / "vendors"
+
+STATICFILES_DIRS = [
+    STATICFILES_BASE_DIR
+]
+
+STATIC_ROOT = BASE_DIR.parent / "local-cdn"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
