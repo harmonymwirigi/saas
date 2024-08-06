@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Enter the Code</h1>
+<form method="POST" action="{% url 'protected' %}">
+    {% csrf_token %}
+    <input type="password" name="code" placeholder="Enter your Code" />
+    <button type="submit" >Submit</button>
+
+</form>
+
+{% endblock main %}
