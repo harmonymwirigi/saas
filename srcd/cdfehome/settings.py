@@ -40,7 +40,6 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default=None)
 
 DEBUG = config('DJANGO_DEBUG')
 
-
 ALLOWED_HOSTS = [
      ".railway.app" #  https://saas.prod,railway.pp
 ]
@@ -64,6 +63,7 @@ INSTALLED_APPS = [
     "comando",
     'profiles',
     'subscriptions',
+    'customers',
     # third-party-apps
      "allauth_ui",
     'allauth',
