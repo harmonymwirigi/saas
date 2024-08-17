@@ -23,7 +23,7 @@ class Customer(models.Model):
             if self.init_email_confirmed and self.init_email:
                 email = self.init_email
                 if email != "" or email is not None:  
-                    stripe_id = helpers.billing.create_customer(email = email,raw=False)
+                    stripe_id = helpers.billing.create_customer(email = email,metadata ={"user_id": self.user.id}, raw=False)
                     self.stripe_id = stripe_id
         
         super().save(*args, **kwargs)

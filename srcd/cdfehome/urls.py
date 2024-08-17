@@ -18,11 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import (home_page_view,  pw_protected_view, user_only_view, staff_only_view)
 from auth import views as auth_views
+from checkout import views as checkout_views
+from subscriptions import views as subscription_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",home_page_view , name="home"),
     path("login/", auth_views.login_view, name="login"),
+    path('checkout/sub-price/<int:price_id>', checkout_views.product_price_redirect_view,name="sub-price-checkout"),
+    path('checkout/start/', checkout_views.checkout_redirect_view, name='stripe-checkout-start'),
+    path('checkout/success/', checkout_views.checkout_finalize_view, name='stripe-checkout-end'),
+    path("pricing/", subscription_views.subscription_price_view, name="pricing"),
+    path("pricing/<str:interval>/", subscription_views.subscription_price_view, name="pricing_interval"),
     path("register/", auth_views.register_view, name="register"),
     path('accounts/', include('allauth.urls')), 
     path('protected/', pw_protected_view, name="protected"),
