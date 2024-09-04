@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block head_title %}SaaS{% endblock head_title %}</title>
     {% include 'base/css.html' %}
 </head>
 <body>
     {% include 'nav/navbar.html' %}
-     {% block main %}{% endblock main %}
+    {% include 'base/messages.html' with messages=messages %}
+     {% block main %}
+     {% endblock main %}
 
      {% include 'base/js.html' %}
 </body>

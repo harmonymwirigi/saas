@@ -32,6 +32,7 @@ urlpatterns = [
     path("pricing/", subscription_views.subscription_price_view, name="pricing"),
     path("pricing/<str:interval>/", subscription_views.subscription_price_view, name="pricing_interval"),
     path("register/", auth_views.register_view, name="register"),
+    path('accounts/billing/', subscription_views.user_subscription_view, name='user_subscription'),
     path('accounts/', include('allauth.urls')), 
     path('protected/', pw_protected_view, name="protected"),
     path('profile/', include('profiles.urls')),
